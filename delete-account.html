@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ride Sync — Delete your account</title>
+<style>
+  :root {
+    --s0:#0B0B0C; --s1:#111214; --line:#26282B;
+    --ink:#F5F5F3; --ink2:#A9ABAD; --ink3:#7F8286; --lime:#C6F000; --crit:#E5352B;
+  }
+  *{box-sizing:border-box}
+  body{margin:0;background:var(--s0);color:var(--ink);
+    font:16px/1.65 "IBM Plex Sans",system-ui,-apple-system,Segoe UI,sans-serif;
+    -webkit-font-smoothing:antialiased}
+  .wrap{max-width:700px;margin:0 auto;padding-inline:20px;padding-block:56px 88px}
+  .brand{font:600 13px/1 system-ui,sans-serif;letter-spacing:.2em;color:var(--lime);margin:0 0 18px}
+  h1{font-size:clamp(30px,6vw,44px);line-height:1.1;margin:0 0 14px;letter-spacing:-.01em}
+  h2{font-size:20px;margin:40px 0 10px}
+  p,li{color:var(--ink2);max-width:64ch}
+  strong{color:var(--ink)}
+  a{color:var(--lime)}
+  ol.steps{padding-left:0;counter-reset:s;list-style:none;margin:18px 0 0}
+  ol.steps li{counter-increment:s;position:relative;padding-left:40px;padding-block:13px;
+    border-top:1px solid var(--line)}
+  ol.steps li:last-child{border-bottom:1px solid var(--line)}
+  ol.steps li::before{content:counter(s);position:absolute;left:0;top:14px;
+    font-family:ui-monospace,Menlo,monospace;font-size:12px;color:var(--lime);width:26px;text-align:right}
+  ol.steps b{color:var(--ink)}
+  ul{padding-left:20px}
+  li{margin-bottom:7px}
+  .box{background:var(--s1);border:1px solid var(--line);border-left:3px solid var(--crit);
+    border-radius:4px;padding:20px 22px;margin:28px 0}
+  .box p{margin:0;color:var(--ink2)}
+  .box p+p{margin-top:10px}
+  .foot{margin-top:54px;padding-top:22px;border-top:1px solid var(--line);font-size:14px;color:var(--ink3)}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <p class="brand">RIDE SYNC</p>
+  <h1>Delete your account</h1>
+  <p>
+    You can delete your Ride Sync account and everything in it from inside the app, without asking
+    anyone. It takes about ten seconds.
+  </p>
+
+  <h2>From the app</h2>
+  <ol class="steps">
+    <li><b>Open Ride Sync</b> and tap your picture, top right of the map.</li>
+    <li><b>Scroll to the bottom</b> of Profile.</li>
+    <li><b>Tap Delete account.</b> You will be shown exactly what goes, and asked to confirm twice.</li>
+  </ol>
+
+  <h2>What gets deleted</h2>
+  <ul>
+    <li>Your rides, both on the phone and on our servers</li>
+    <li>Your saved routes, saved spots, and your home and work places</li>
+    <li>Your profile, and your membership of any group ride, which takes your notification token with it</li>
+    <li>Your account itself, so signing in again creates a brand new one rather than restoring this one</li>
+  </ul>
+
+  <div class="box">
+    <p><strong>This cannot be undone.</strong> There is no recovery period and no backup we can restore from. Export any ride you want to keep before you delete, using Share or Export on the ride itself.</p>
+    <p>A group ride you are <strong>hosting</strong> is ended rather than deleted, so the riders in it are not stranded mid-ride. Rides that other people hosted stay theirs; you are simply removed from them.</p>
+  </div>
+
+  <h2>If you cannot open the app</h2>
+  <p>
+    Email <a href="mailto:sharath05kumar@gmail.com">sharath05kumar@gmail.com</a> from the address
+    you signed in with, asking for your account to be deleted. We will confirm once it is done.
+    Please allow up to 30 days, though in practice it is much faster.
+  </p>
+
+  <h2>What we keep, and for how long</h2>
+  <p>
+    Nothing. Deletion removes your data rather than hiding it, and there is no retention window
+    afterwards. The only exception is that anonymous, non-identifying server logs kept by our
+    hosting provider for operational security may persist for a short period, and those contain no
+    ride data and no location.
+  </p>
+
+  <p class="foot">
+    Ride Sync · com.ridesync.rider · <a href="./privacy.html">Privacy policy</a>
+  </p>
+
+</div>
+</body>
+</html>
