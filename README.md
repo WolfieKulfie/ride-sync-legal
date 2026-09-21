@@ -11,10 +11,15 @@ the site and these legal pages and nothing else. The app's source stays private,
 
 | Page | URL |
 |---|---|
-| Site | https://wolfiekulfie.github.io/ride-sync-legal/ |
-| Legal index | https://wolfiekulfie.github.io/ride-sync-legal/legal.html |
-| Privacy policy | https://wolfiekulfie.github.io/ride-sync-legal/privacy.html |
-| Delete account | https://wolfiekulfie.github.io/ride-sync-legal/delete-account.html |
+| Site | https://ridesync.co.in/ |
+| Legal index | https://ridesync.co.in/legal.html |
+| Privacy policy | https://ridesync.co.in/privacy.html |
+| Delete account | https://ridesync.co.in/delete-account.html |
+
+The custom domain is set by the `CNAME` file in this repository. Deleting or editing that file
+changes where the site answers, so leave it alone unless the domain itself is moving. The old
+`wolfiekulfie.github.io/ride-sync-legal/...` addresses redirect here, which is what keeps the
+Play Console links working until they are updated.
 
 The privacy and delete-account URLs are unchanged and still go into Play Console, under
 **App content → Privacy policy** and **App content → Data deletion**, and into `config.js` in the
