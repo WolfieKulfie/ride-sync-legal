@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ridesync.co.in/sitemap.xml
