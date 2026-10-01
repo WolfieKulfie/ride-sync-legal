@@ -85,8 +85,12 @@ p{margin:0}
 }
 .topbar-in{display:flex;align-items:center;gap:14px;height:62px}
 .mark{height:30px;width:auto;flex:none}
-.brand{display:flex;align-items:center}
-.topbar .mark{height:34px}
+.brand{display:flex;align-items:center;gap:13px}
+.topbar .mark{height:30px}
+/* The name is set beside the mark in the bar: the supplied lockup stacks it
+   under the RS, which at 30px tall would be unreadable. */
+.brand .name{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:.01em;color:var(--ink)}
+.footmark{height:52px;width:auto;flex:none}
 /* Two pages now, so the bar carries a nav rather than a version chip. */
 .nav{display:flex;gap:26px;margin-left:30px}
 .nav a{font-size:14.5px;color:var(--ink-2);padding-block:6px;border-bottom:2px solid transparent}
