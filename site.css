@@ -353,3 +353,7 @@ footer{padding-block:44px 56px}
 .standfirst b{color:var(--ink-2);font-weight:500}
 @media (max-width:900px){.nav{margin-left:18px;gap:18px}}
 @media (max-width:560px){.nav{display:none}}
+
+/* inline links inside running text */
+.prose a.lnk{color:var(--lime);border-bottom:1px solid rgba(198,240,0,.35)}
+.prose a.lnk:hover{border-bottom-color:var(--lime)}
