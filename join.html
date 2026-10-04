@@ -25,6 +25,9 @@
     --mono:"IBM Plex Mono",ui-monospace,monospace;
   }
   *{box-sizing:border-box}
+  /* An author `display` rule outranks the UA stylesheet's [hidden]{display:none}, so without
+     this the stats block renders its empty placeholders on every ride that fails to load. */
+  [hidden]{display:none !important}
   body{
     margin:0; background:var(--ground); color:var(--ink);
     font-family:var(--body); min-height:100dvh;
