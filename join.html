@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Join a ride · Ride Sync</title>
+<meta name="theme-color" content="#0B0B0C">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Join my Ride Sync group ride">
+<meta property="og:description" content="Everyone on one live map, so nobody gets left behind.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://ridesync.co.in/img/share.jpg">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    color-scheme: dark;
+    --ground:#0B0B0C; --panel:#111214; --line:#26282B;
+    --lime:#C6F000; --on-lime:#1A2200;
+    --ink:#F5F5F3; --ink-2:#A9ABAD; --ink-3:#6E7276;
+    --display:"Saira Condensed",system-ui,sans-serif;
+    --body:"IBM Plex Sans",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:var(--body); min-height:100dvh;
+    display:flex; align-items:center; justify-content:center; padding:24px;
+  }
+  .card{width:100%; max-width:420px; text-align:center}
+  .brand{
+    font-family:var(--mono); font-size:11px; font-weight:600;
+    letter-spacing:.14em; color:var(--lime); text-transform:uppercase;
+  }
+  h1{
+    font-family:var(--display); font-weight:700; font-size:40px; line-height:1;
+    margin:14px 0 10px; text-wrap:balance;
+  }
+  p{color:var(--ink-2); font-size:15px; line-height:1.5; margin:0}
+  .code{
+    font-family:var(--mono); font-weight:600; font-size:26px; letter-spacing:.3em;
+    color:var(--lime); background:var(--panel); border:1px solid var(--line);
+    border-radius:14px; padding:16px 10px 16px 20px; margin:22px 0 4px;
+  }
+  .btn{
+    display:flex; align-items:center; justify-content:center;
+    min-height:54px; border-radius:27px; text-decoration:none;
+    font-family:var(--display); font-weight:700; font-size:17px;
+    margin-top:16px;
+  }
+  .btn-lime{background:var(--lime); color:var(--on-lime)}
+  .btn-ghost{border:1.5px solid var(--line); color:var(--ink)}
+  .fine{font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; color:var(--ink-3); margin-top:22px}
+  .fine a{color:var(--ink-2)}
+  @media (prefers-reduced-motion:no-preference){
+    .card{animation:in .35s ease-out}
+    @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="brand">Ride Sync</div>
+    <h1 id="title">Join the group ride</h1>
+    <p id="blurb">Everyone on one live map, so nobody gets left behind.</p>
+    <div class="code" id="code" hidden></div>
+    <p id="codehint" class="fine" hidden>If the app does not open, type this code into Join a ride.</p>
+
+    <a class="btn btn-lime" id="open" href="#">Open in Ride Sync</a>
+    <a class="btn btn-ghost" id="play" href="https://play.google.com/store/apps/details?id=com.ridesync.rider">Get the app</a>
+
+    <p class="fine">Free. No ads, no tracking. <a href="/">ridesync.co.in</a></p>
+  </main>
+
+<script>
+// Two kinds of link land here:
+//   ?code=XXXXXX   a group ride, opening the app on the join screen with the code filled in
+//   ?ref=XXXXXX    a rider's personal link, which just credits them for whoever arrives
+//
+// This page exists because a ridesync:// link is dead text to anybody who does not already have
+// the app — which is exactly the person an invite is for. An https page can be opened by anyone,
+// and from here the phone either has the app or it does not.
+//
+// It lives on ridesync.co.in rather than the Supabase function that used to serve it, because
+// Supabase rewrites text/html to text/plain on its default domains as an anti-phishing measure.
+// Every invite rendered as raw source. Our own domain has no such restriction, is free, and is
+// the only place Android App Links can ever work from.
+(function () {
+  var clean = function (s) { return (s || '').toUpperCase().replace(/[^A-Z0-9]/g, '').slice(0, 12); };
+  var p = new URLSearchParams(location.search);
+  var code = clean(p.get('code'));
+  var ref = clean(p.get('ref'));
+
+  var deep = code ? 'ridesync://join?code=' + code : 'ridesync://ref?ref=' + ref;
+  document.getElementById('open').href = deep;
+
+  if (code) {
+    var el = document.getElementById('code');
+    el.textContent = code;
+    el.hidden = false;
+    document.getElementById('codehint').hidden = false;
+  } else {
+    document.getElementById('title').textContent = 'Ride Sync';
+    document.getElementById('blurb').textContent =
+      'Navigation built for a motorcycle, not borrowed from a car. Group rides on one live map, ' +
+      'an SOS every rider has to answer, and maps that work where the signal does not.';
+  }
+
+  // Try the app straight away, but only on a phone, and only once the page has painted. Firing it
+  // on a desktop browser produces a scary "no app found" dialog for somebody who was only ever
+  // going to click through to the store.
+  if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    setTimeout(function () { location.href = deep; }, 500);
+  }
+})();
+</script>
+</body>
+</html>

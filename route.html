@@ -1,0 +1,142 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>A shared ride · Ride Sync</title>
+<meta name="theme-color" content="#0B0B0C">
+<meta name="robots" content="noindex">
+<meta property="og:title" content="Ride this route on Ride Sync">
+<meta property="og:description" content="Somebody shared a ride with you. Open it in Ride Sync and follow the exact line.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://ridesync.co.in/img/share.jpg">
+<link rel="icon" href="img/icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
+<style>
+  :root{
+    color-scheme: dark;
+    --ground:#0B0B0C; --panel:#111214; --line:#26282B;
+    --lime:#C6F000; --on-lime:#1A2200;
+    --ink:#F5F5F3; --ink-2:#A9ABAD; --ink-3:#6E7276;
+    --display:"Saira Condensed",system-ui,sans-serif;
+    --body:"IBM Plex Sans",system-ui,sans-serif;
+    --mono:"IBM Plex Mono",ui-monospace,monospace;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; background:var(--ground); color:var(--ink);
+    font-family:var(--body); min-height:100dvh;
+    display:flex; align-items:center; justify-content:center; padding:24px;
+  }
+  .card{width:100%; max-width:440px; text-align:center}
+  .brand{
+    font-family:var(--mono); font-size:11px; font-weight:600;
+    letter-spacing:.14em; color:var(--lime); text-transform:uppercase;
+  }
+  h1{
+    font-family:var(--display); font-weight:700; font-size:36px; line-height:1.02;
+    margin:14px 0 8px; text-wrap:balance;
+  }
+  p{color:var(--ink-2); font-size:15px; line-height:1.5; margin:0}
+  .stats{
+    display:flex; gap:1px; background:var(--line); border:1px solid var(--line);
+    border-radius:16px; overflow:hidden; margin:22px 0 4px;
+  }
+  .stat{flex:1; background:var(--panel); padding:16px 8px}
+  .stat b{
+    display:block; font-family:var(--display); font-weight:700; font-size:26px;
+    color:var(--ink); font-variant-numeric:tabular-nums;
+  }
+  .stat span{
+    font-family:var(--mono); font-size:10px; font-weight:600;
+    letter-spacing:.12em; color:var(--ink-3); text-transform:uppercase;
+  }
+  .btn{
+    display:flex; align-items:center; justify-content:center;
+    min-height:54px; border-radius:27px; text-decoration:none;
+    font-family:var(--display); font-weight:700; font-size:17px;
+    margin-top:16px;
+  }
+  .btn-lime{background:var(--lime); color:var(--on-lime)}
+  .btn-ghost{border:1.5px solid var(--line); color:var(--ink)}
+  .fine{font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; color:var(--ink-3); margin-top:22px}
+  .fine a{color:var(--ink-2)}
+  @media (prefers-reduced-motion:no-preference){
+    .card{animation:in .35s ease-out}
+    @keyframes in{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:none}}
+  }
+</style>
+</head>
+<body>
+  <main class="card">
+    <div class="brand">Ride Sync</div>
+    <h1 id="title">A shared ride</h1>
+    <p id="blurb">Open it in Ride Sync to follow the exact line, or export it.</p>
+
+    <div class="stats" id="stats" hidden>
+      <div class="stat"><b id="km">—</b><span>km</span></div>
+      <div class="stat"><b id="dur">—</b><span>time</span></div>
+    </div>
+
+    <a class="btn btn-lime" id="open" href="#">Open in Ride Sync</a>
+    <a class="btn btn-ghost" id="play" href="https://play.google.com/store/apps/details?id=com.ridesync.rider">Get the app</a>
+
+    <p class="fine">Free. No ads, no tracking. <a href="/">ridesync.co.in</a></p>
+  </main>
+
+<script>
+// Shows the ride somebody sent you, then hands off to the app.
+//
+// It reads the ride through the public rs_shared_ride function with the publishable key. That key
+// is meant to be public — it ships inside every copy of the Android app, so anyone who wanted it
+// has always had it — and the function is the one deliberate hole in row-level security: possess
+// the id, read the ride. The id only ever appears in a link its owner chose to send, and the
+// function returns geometry and nothing about the person, so a link holder cannot work out whose
+// ride it is or find any of their others.
+//
+// The old version of this page ran on a Supabase Edge Function with the SERVICE ROLE key, which
+// would have been far worse had it ever worked. It never did: Supabase rewrites text/html to
+// text/plain on its default domains, so the page only ever rendered as raw source.
+(function () {
+  var SUPABASE_URL = 'https://xiysxfovdlavmvdnfikm.supabase.co';
+  var PUBLISHABLE = 'sb_publishable_wBCGdhPOG4Kkc_hltsrrUg_4pGzTkQr';
+
+  var id = (new URLSearchParams(location.search).get('id') || '').trim();
+  var deep = 'ridesync://route?id=' + encodeURIComponent(id);
+  document.getElementById('open').href = deep;
+
+  var hms = function (s) {
+    s = Math.max(0, Math.round(s || 0));
+    var h = Math.floor(s / 3600), m = Math.round((s % 3600) / 60);
+    return h ? h + 'h ' + m + 'm' : m + 'm';
+  };
+
+  // Details are a bonus, never a gate. If this fails — offline, key rotated, ride deleted — the
+  // page still says what it is and both buttons still work.
+  if (id && /^[0-9a-f-]{32,36}$/i.test(id) && PUBLISHABLE.indexOf('PLACEHOLDER') === -1) {
+    fetch(SUPABASE_URL + '/rest/v1/rpc/rs_shared_ride', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json', apikey: PUBLISHABLE, Authorization: 'Bearer ' + PUBLISHABLE },
+      body: JSON.stringify({ p_id: id }),
+    })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (rows) {
+        var r = rows && rows[0];
+        if (!r) return;
+        if (r.name) document.getElementById('title').textContent = r.name;
+        if (r.distance_km != null) document.getElementById('km').textContent = Number(r.distance_km).toFixed(1);
+        if (r.duration_sec != null) document.getElementById('dur').textContent = hms(r.duration_sec);
+        if (r.distance_km != null || r.duration_sec != null) document.getElementById('stats').hidden = false;
+      })
+      .catch(function () {});
+  }
+
+  if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    setTimeout(function () { location.href = deep; }, 700);
+  }
+})();
+</script>
+</body>
+</html>
