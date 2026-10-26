@@ -370,3 +370,63 @@ footer{padding-block:44px 56px}
 /* inline links inside running text */
 .prose a.lnk{color:var(--lime);border-bottom:1px solid rgba(198,240,0,.35)}
 .prose a.lnk:hover{border-bottom-color:var(--lime)}
+
+
+/* --- small-screen hardening -------------------------------------------
+   Found by sweeping both pages from 240px up. The buttons were the only
+   thing that could not shrink: a long label plus fixed side padding pushed
+   past the viewport on a folded phone and on a browser at 200% text size. */
+@media (max-width: 420px){
+  .btn{
+    max-width:100%;
+    padding-inline:18px;
+    font-size:14.5px;
+    white-space:normal;
+    line-height:1.25;
+    height:auto;
+    min-height:52px;
+    padding-block:12px;
+  }
+  .cta-row{width:100%}
+  .cta-row .btn{width:100%}
+}
+/* Nothing on either page should be able to push the viewport sideways. */
+body{overflow-wrap:break-word}
+.prose a.lnk, .foot a, .lede{overflow-wrap:anywhere}
+
+
+/* At roughly 240px of CSS width, which is what a 480px phone gives you at
+   200% browser zoom, two things could not shrink any further: the three-up
+   stats row, and the header's logo-nav-button line. Both are allowed to wrap
+   rather than be clipped by the body's overflow-x. */
+@media (max-width: 330px){
+  .topbar-in{flex-wrap:wrap;height:auto;padding-block:10px;row-gap:8px}
+  .topbar .spacer{display:none}
+  .nav{margin-left:0;order:3;width:100%;gap:18px}
+  .topbar .btn{margin-left:auto}
+  .stats{flex-wrap:wrap;gap:14px 20px}
+  .stat{min-width:0}
+  .req,.standfirst{gap:8px 16px}
+}
+
+
+/* --- header fit on a phone --------------------------------------------
+   The bar was trying to carry logo + name + two nav labels + a button on a
+   360px screen and wrapping into three lines. The mark identifies the brand
+   on its own, so the name steps aside and the labels stop breaking.
+   The topbar button also has to opt out of the wrapping rule above, which
+   was splitting "Get it" across two lines. */
+.nav a{white-space:nowrap}
+.topbar .btn{white-space:nowrap;height:40px;min-height:0;padding-block:0;font-size:14px}
+@media (max-width: 600px){
+  .brand .name{display:none}
+  .topbar-in{gap:10px}
+  .nav{margin-left:4px}
+}
+@media (max-width: 330px){
+  .topbar-in{flex-wrap:nowrap}
+  .nav{order:0;width:auto;margin-left:2px;gap:12px}
+  .topbar .spacer{display:block}
+  .nav a{font-size:12px}
+  .topbar .btn{padding-inline:12px;font-size:13px}
+}
