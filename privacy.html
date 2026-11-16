@@ -62,12 +62,15 @@
 
   <p class="brand">RIDE SYNC</p>
   <h1>Privacy Policy</h1>
-  <p class="upd">Last updated 17 September 2026 · applies to Ride Sync for Android (com.ridesync.rider)</p>
+  <p class="upd">Last updated 1 December 2026 · applies to Ride Sync for Android (com.ridesync.rider)</p>
 
   <p class="lead">
     Ride Sync is a navigation app for motorcyclists. It needs to know where you are, and during a
     group ride it shows that to the people you chose to ride with. It does not sell your data, does
-    not advertise, and contains no analytics or tracking software of any kind. Nothing is reported about you in the background: if the app crashes it asks you first.
+    not advertise, and contains no analytics or advertising software. The one thing that reports
+    in the background is the map itself: Mapbox's map software sends anonymous movement data so it
+    can improve its maps and traffic, and you can switch that off (see below). If the app crashes it
+    asks you before sending anything.
   </p>
 
   <h2>Who is responsible</h2>
@@ -90,7 +93,7 @@
       <tr>
         <td>Name</td>
         <td data-label="Why">So other riders in a group know whose pin is whose.</td>
-        <td data-label="Where it goes">Your device and the server. Visible to riders in the same group ride.</td>
+        <td data-label="Where it goes">Your device and the server. Visible to riders in the same group ride. If you joined through another rider's link, your name as it was then also appears in their list of riders they brought in.</td>
       </tr>
       <tr>
         <td>Email address</td>
@@ -105,7 +108,7 @@
       <tr>
         <td>Notification token</td>
         <td data-label="Why">So an SOS from your group reaches your phone even if the app has been closed.</td>
-        <td data-label="Where it goes">The server, attached to your membership of a specific ride.</td>
+        <td data-label="Where it goes">The server, attached to your membership of a specific ride and kept apart from it, so only you can read it. Expo uses it to deliver the notification.</td>
       </tr>
       <tr>
         <td>Feedback and crash reports</td>
@@ -124,7 +127,8 @@
   <h2>How location is used</h2>
   <p>
     Location is collected only while you are doing something that needs it: navigating, recording a
-    ride, or taking part in a group ride. While any of those is running, Android shows a permanent
+    ride, or taking part in a group ride, including waiting in the lobby before the host starts it.
+    While any of those is running, Android shows a permanent
     notification saying so, and location continues with the screen off, because a motorcycle
     navigation app that stops working when you lock your phone is useless.
   </p>
@@ -138,8 +142,9 @@
   <h3>During a group ride</h3>
   <p>
     Your live position is visible to the other riders in that group ride, and theirs to you. That is
-    the entire point of the feature. It is visible only to people in the same ride, only while the
-    ride is running, and it stops the moment you leave.
+    the entire point of the feature. It is visible only to people in the same ride, from the moment
+    you join until the ride ends, including while you wait for the start, and it stops the moment
+    you leave.
   </p>
 
   <h3>If you raise an SOS</h3>
@@ -151,13 +156,15 @@
 
   <h2>Who else sees your data</h2>
   <p>
-    <strong>It is not sold, and it is not shared for advertising.</strong> Ride Sync uses three
+    <strong>It is not sold, and it is not shared for advertising.</strong> Ride Sync uses five
     service providers, which process data on my behalf in order to make the app work:
   </p>
   <ul>
     <li><strong>Supabase</strong> hosts the database and handles sign-in.</li>
-    <li><strong>Mapbox</strong> provides maps and route calculation. It receives coordinates in order to draw a map and work out a route.</li>
+    <li><strong>Mapbox</strong> provides maps, route calculation and traffic. It receives coordinates in order to draw a map and work out a route. Its map software also sends Mapbox anonymous, de-identified movement data, which Mapbox uses to improve its maps and traffic. Tap the small (i) in the corner of any map to switch this off.</li>
     <li><strong>Google</strong> provides place search and sign-in. It receives what you type into search, and your approximate location, in order to return nearby results.</li>
+    <li><strong>Open-Meteo</strong> provides the weather. It receives coordinates rounded to about 100 metres, and nothing about who you are.</li>
+    <li><strong>Expo</strong> delivers notifications. It receives your notification token and the words of the notification: a rider's name and the word SOS, or the name of a ride that has started.</li>
   </ul>
   <p>
     Beyond these, nobody receives your data. There is no analytics provider, no advertising network,
