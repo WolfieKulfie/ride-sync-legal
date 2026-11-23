@@ -1,14 +1,20 @@
 /* ---------------------------------------------------------------
-   Ride Sync: tokens lifted straight from the app's theme.js.
-   Dark-first on purpose: the app is a riding instrument, and a light
-   version of this page would misrepresent the product. Single theme,
-   every colour painted explicitly.
+   Ride Sync site. Tokens lifted straight from the app's theme.js.
+
+   Dark-first on purpose: the app is a riding instrument and the use
+   scene is a phone on a handlebar at dawn, so a light version would
+   misrepresent it. Single theme, every colour painted explicitly.
+
+   Layout is edge to edge: a band spans the viewport, its copy keeps a
+   gutter, and its screenshot runs off the outer edge. Each band is one
+   claim, so a visitor who stops scrolling at any point has been told
+   something whole.
    --------------------------------------------------------------- */
 :root{
   color-scheme: dark;
 
   --ground:#0B0B0C;      /* surface0 */
-  --panel:#111214;       /* surface1 */
+  --panel:#0F1012;
   --raised:#17181B;
   --line:#26282B;
   --line-soft:#1B1D20;
@@ -20,18 +26,20 @@
   --red:#E5352B;
 
   --ink:#F5F5F3;
-  --ink-2:#A9ABAD;
-  --ink-3:#7E8185;
+  --ink-2:#A9ABAD;       /* 8.3:1 on ground */
+  --ink-3:#8A8D91;       /* 6.0:1 on ground */
 
   --display:'Saira Condensed', 'Arial Narrow', system-ui, sans-serif;
   --body:'IBM Plex Sans', system-ui, -apple-system, Segoe UI, sans-serif;
   --mono:'IBM Plex Mono', ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --gutter: clamp(20px, 5vw, 64px);
-  --max: 1180px;
+  --gutter: clamp(20px, 5vw, 72px);
+  --max: 1320px;
 }
 
 *{box-sizing:border-box}
+
+html{scrollbar-color:#2F3236 var(--ground)}
 
 body{
   margin:0;
@@ -42,243 +50,180 @@ body{
   line-height:1.6;
   -webkit-font-smoothing:antialiased;
   overflow-x:hidden;
+  overflow-wrap:break-word;
+  caret-color:var(--lime);
 }
 
 img{display:block;max-width:100%}
+
+/* The surfaces the browser draws for us still belong to the design. */
 ::selection{background:var(--lime);color:var(--on-lime)}
-a{color:var(--ink);text-decoration:none}
+::-webkit-scrollbar{width:11px;height:11px}
+::-webkit-scrollbar-track{background:var(--ground)}
+::-webkit-scrollbar-thumb{background:#2F3236;border-radius:999px;border:3px solid var(--ground)}
+::-webkit-scrollbar-thumb:hover{background:#3E4247}
+
+a{color:var(--ink);text-decoration:none;text-underline-offset:3px}
 :focus-visible{outline:2px solid var(--lime);outline-offset:3px;border-radius:4px}
 
 .wrap{width:100%;max-width:var(--max);margin-inline:auto;padding-inline:var(--gutter)}
 
 /* --- type ------------------------------------------------------ */
-.eyebrow{
-  font-family:var(--mono);font-weight:600;font-size:11px;
-  letter-spacing:.16em;text-transform:uppercase;color:var(--ink-3);
-  margin:0;
+h1,h2,h3{
+  font-family:var(--display);font-weight:700;margin:0;
+  text-wrap:balance;line-height:.95;letter-spacing:-.012em;
 }
-h1,h2,h3{font-family:var(--display);font-weight:700;margin:0;text-wrap:balance;line-height:.96;letter-spacing:-.005em}
-h1{font-size:clamp(40px,6.4vw,68px)}
-h2{font-size:clamp(32px,5.2vw,52px)}
-h3{font-size:clamp(23px,3vw,30px);line-height:1.04}
+h1{font-size:clamp(42px,7.2vw,86px)}
+h2{font-size:clamp(34px,5.4vw,62px)}
+h3{font-size:clamp(22px,2.8vw,28px);line-height:1.06;letter-spacing:-.006em}
 p{margin:0}
-.lede{font-size:clamp(16px,2vw,19px);color:var(--ink-2);max-width:56ch}
+.lede{font-size:clamp(16.5px,1.5vw,19px);color:var(--ink-2);max-width:56ch}
 
 /* --- buttons --------------------------------------------------- */
 .btn{
   display:inline-flex;align-items:center;justify-content:center;gap:9px;
-  height:52px;padding:0 24px;border-radius:12px;border:1px solid transparent;
-  font-family:var(--body);font-weight:600;font-size:15px;
+  height:54px;padding:0 26px;border-radius:12px;border:1px solid transparent;
+  font-family:var(--body);font-weight:600;font-size:15.5px;
   cursor:pointer;transition:transform .12s ease, background .16s ease, border-color .16s ease;
 }
 .btn:active{transform:translateY(1px)}
 .btn-lime{background:var(--lime);color:var(--on-lime)}
 .btn-lime:hover{background:#D3FF14}
 .btn-ghost{background:transparent;color:var(--ink);border-color:var(--line)}
-.btn-ghost:hover{border-color:#3C4045;background:#101113}
+.btn-ghost:hover{border-color:#43474C;background:#101113}
+.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
 
 /* --- top bar --------------------------------------------------- */
 .topbar{
   position:sticky;top:env(safe-area-inset-top, 0px);z-index:40;
-  background:rgba(11,11,12,.82);backdrop-filter:blur(14px);
+  background:rgba(11,11,12,.86);backdrop-filter:blur(14px);
   border-bottom:1px solid var(--line-soft);
 }
 .topbar-in{display:flex;align-items:center;gap:14px;height:62px}
 .mark{height:30px;width:auto;flex:none}
+.footmark{height:54px;width:auto;flex:none}
 .brand{display:flex;align-items:center;gap:13px}
-.topbar .mark{height:30px}
-/* The name is set beside the mark in the bar: the supplied lockup stacks it
-   under the RS, which at 30px tall would be unreadable. */
 .brand .name{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:.01em;color:var(--ink)}
-.footmark{height:52px;width:auto;flex:none}
-/* Two pages now, so the bar carries a nav rather than a version chip. */
 .nav{display:flex;gap:26px;margin-left:30px}
-.nav a{font-size:14.5px;color:var(--ink-2);padding-block:6px;border-bottom:2px solid transparent}
+.nav a{font-size:14.5px;color:var(--ink-2);padding-block:6px;border-bottom:2px solid transparent;white-space:nowrap}
 .nav a:hover{color:var(--ink)}
 .nav a[aria-current="page"]{color:var(--ink);border-bottom-color:var(--lime)}
-.ver{
-  font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.08em;
-  color:var(--ink-3);border:1px solid var(--line);border-radius:999px;padding:3px 9px;
-}
 .topbar .spacer{flex:1}
-.topbar .btn{height:40px;padding:0 18px;font-size:14px}
+.topbar .btn{height:40px;padding:0 18px;font-size:14px;white-space:nowrap}
 
 /* --- hero ------------------------------------------------------ */
 .hero{position:relative;overflow:hidden;border-bottom:1px solid var(--line-soft)}
-#trace{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;opacity:.9}
+#trace{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .hero-in{
   position:relative;z-index:2;
-  display:grid;grid-template-columns:minmax(0,1.22fr) minmax(0,.78fr);
-  gap:clamp(28px,5vw,64px);align-items:center;
-  padding-block:clamp(52px,8vw,96px) clamp(48px,7vw,84px);
+  display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:clamp(24px,4vw,56px);align-items:center;
+  padding-block:clamp(56px,8vw,104px) 0;
 }
-.pill{
-  display:inline-flex;align-items:center;gap:9px;
-  background:#000;border:1px solid var(--line);border-radius:999px;
-  padding:7px 15px 7px 12px;
-  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.12em;
-  text-transform:uppercase;color:var(--ink-2);
-}
-.dot{width:8px;height:8px;border-radius:50%;background:var(--lime);flex:none}
-.hero h1{margin-top:22px}
+.hero-copy{padding-bottom:clamp(56px,8vw,104px)}
 .hero h1 em{font-style:normal;color:var(--lime)}
-.hero .lede{margin-top:20px}
-.cta-row{display:flex;flex-wrap:wrap;gap:12px;margin-top:30px}
-.fineprint{font-family:var(--mono);font-size:11.5px;letter-spacing:.05em;color:var(--ink-3);margin-top:16px}
+.hero .lede{margin-top:24px}
+.fineprint{
+  font-family:var(--mono);font-size:12.5px;letter-spacing:.015em;
+  color:var(--ink-3);margin-top:18px;
+}
+/* The hero shot runs off the bottom of its band rather than sitting in it. */
+.hero-art{position:relative;display:flex;justify-content:center;align-self:end}
+.hero-art .shot{max-width:min(340px,86%);margin-bottom:-2px}
 
-/* --- the instrument strip (the app's own stat row) ------------- */
-.instrument{margin-top:40px;border-top:1px solid var(--line);padding-top:20px;max-width:540px}
-.instrument-label{
-  font-family:var(--mono);font-size:10.5px;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--ink-3);
+/* --- bands: one claim each, screenshot to the outer edge -------- */
+.band{border-bottom:1px solid var(--line-soft);overflow:hidden}
+.band:nth-of-type(even){background:var(--panel)}
+.band-in{
+  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
+  align-items:center;gap:clamp(28px,5vw,80px);
+  width:100%;max-width:var(--max);margin-inline:auto;
 }
-.instrument-label b{color:var(--ink-2);font-weight:500}
-.stats{display:flex;gap:clamp(20px,4.5vw,44px);margin-top:14px}
-.stat dt{
-  font-family:var(--mono);font-size:10.5px;font-weight:500;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--ink-3);margin:0;
-}
-.stat dd{
-  font-family:var(--mono);font-weight:600;font-size:clamp(24px,4.2vw,34px);
-  font-variant-numeric:tabular-nums;letter-spacing:-.02em;margin:4px 0 0;color:var(--ink);
-}
-.stat.alt dd{color:var(--ink-3)}
+.band-copy{padding:clamp(64px,8vw,116px) var(--gutter)}
+.band-copy p{margin-top:20px;color:var(--ink-2);max-width:48ch;font-size:17px;line-height:1.7}
+.band-art{align-self:end;display:flex;justify-content:center;padding-top:clamp(44px,6vw,88px)}
+.band-art .shot{max-width:min(320px,82%);margin-bottom:-2px}
+/* Odd bands put the shot on the left so the eye crosses the page. */
+.band:nth-of-type(odd) .band-art{order:-1}
 
-/* --- phone frame -----------------------------------------------
-   An Android handset, not a generic slab: squarer corners than the
-   fruit company's, a uniform hairline bezel, and a punch-hole camera
-   in a status strip above the screenshot. The gesture pill at the
-   bottom is already in the screenshots themselves.
-   ---------------------------------------------------------------- */
-.phone{
+/* The screenshots are real renders of the app, so they get a real
+   handset rather than a plain rounded rectangle: Android corners, a
+   thin uniform bezel, a punch-hole camera above the screen. */
+.shot{
   position:relative;width:100%;
-  padding-top:18px;                       /* the status strip the punch-hole sits in */
-  border:7px solid #141517;border-radius:30px;background:#000;
-  box-shadow:0 0 0 1.5px #3B3E43, 0 0 0 3px #0D0E10, 0 40px 90px -30px rgba(0,0,0,.95);
-  overflow:hidden;
+  padding-top:16px;
+  border:7px solid #141517;border-top-left-radius:30px;border-top-right-radius:30px;
+  border-bottom:0;background:#000;
+  box-shadow:0 0 0 1.5px #3B3E43, 0 26px 64px -32px rgba(0,0,0,.92);
 }
-.phone img{width:100%;height:auto}
-/* punch-hole camera */
-.phone::before{
-  content:"";position:absolute;z-index:3;top:5px;left:50%;transform:translateX(-50%);
+.shot::before{
+  content:"";position:absolute;z-index:3;top:4px;left:50%;transform:translateX(-50%);
   width:7px;height:7px;border-radius:50%;
   background:#212326;box-shadow:inset 0 0 0 1px rgba(255,255,255,.10);
 }
-.phone::after{
-  content:"";position:absolute;inset:0;pointer-events:none;
-  background:linear-gradient(180deg, rgba(255,255,255,.05), transparent 20%, transparent 86%, rgba(0,0,0,.25));
+.shot img{width:100%;height:auto;border-top-left-radius:23px;border-top-right-radius:23px}
+
+/* a hairline fact list, not a card */
+.facts{margin-top:28px;border-top:1px solid var(--line);max-width:46ch}
+.facts div{
+  display:flex;gap:16px;align-items:baseline;
+  padding:12px 0;border-bottom:1px solid var(--line);
+  font-size:14.5px;color:var(--ink-2);
 }
-.hero-phone{max-width:316px;margin-inline:auto;transform:rotate(1.1deg)}
+.facts span{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--lime);flex:none;width:78px;
+}
 
 /* --- generic section ------------------------------------------- */
 section{border-bottom:1px solid var(--line-soft)}
-.sec{padding-block:clamp(60px,9vw,110px)}
+.sec{padding-block:clamp(64px,9vw,116px)}
 .sec-head{max-width:62ch}
-.sec-head h2{margin-top:14px}
-.sec-head p{margin-top:18px}
+.sec-head.wide{max-width:900px}
+.sec-head p{margin-top:20px}
 
-/* --- feature rows ---------------------------------------------- */
-.feature{
-  display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);
-  gap:clamp(28px,6vw,72px);align-items:center;
-  padding-block:clamp(44px,6vw,72px);
+/* --- the closing band ------------------------------------------ */
+.close-in{padding-block:clamp(72px,9vw,124px)}
+.specs{
+  margin-top:40px;display:grid;gap:1px;background:var(--line);
+  border:1px solid var(--line);border-radius:14px;overflow:hidden;
+  grid-template-columns:repeat(auto-fit,minmax(170px,1fr));
 }
-.feature + .feature{border-top:1px solid var(--line-soft)}
-.feature:nth-child(even) .feature-art{order:-1}
-.feature-tag{
-  font-family:var(--mono);font-size:11px;font-weight:600;letter-spacing:.16em;
-  text-transform:uppercase;color:var(--lime);
+.specs div{background:var(--ground);padding:20px 22px}
+.specs dt{
+  font-family:var(--mono);font-size:11.5px;letter-spacing:.14em;text-transform:uppercase;
+  color:var(--ink-3);margin:0;
 }
-.feature h3{margin-top:12px}
-.feature p{margin-top:16px;color:var(--ink-2);max-width:46ch}
-.feature-art{display:flex;justify-content:center}
-.feature-art .phone{max-width:286px}
+.specs dd{margin:7px 0 0;font-size:16px;color:var(--ink);font-variant-numeric:tabular-nums}
 
-/* a small detail list, hairlines not cards */
-.detail-list{margin-top:22px;border-top:1px solid var(--line);max-width:46ch}
-.detail-list div{
-  display:flex;gap:14px;align-items:baseline;
-  padding:11px 0;border-bottom:1px solid var(--line);
-  font-size:14.5px;color:var(--ink-2);
+/* --- the essay page -------------------------------------------- */
+.prose{max-width:66ch}
+.prose p{margin-top:22px;font-size:17.5px;line-height:1.75;color:var(--ink-2)}
+.prose p.lead{font-size:21px;line-height:1.6;color:var(--ink)}
+.prose h3{margin-top:54px}
+.prose h3 + p{margin-top:14px}
+.prose strong{color:var(--ink);font-weight:600}
+.prose a.lnk{color:var(--lime);border-bottom:1px solid rgba(198,240,0,.35)}
+.prose a.lnk:hover{border-bottom-color:var(--lime)}
+/* A pulled line is set, not ruled: display face, full measure, air around it. */
+.pull{
+  margin:48px 0 8px;
+  font-family:var(--display);font-weight:700;
+  font-size:clamp(26px,3.8vw,40px);line-height:1.1;letter-spacing:-.012em;
+  color:var(--ink);max-width:22ch;
 }
-.detail-list span{
-  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--ink-3);flex:none;width:76px;
+.standfirst{
+  display:flex;flex-wrap:wrap;gap:10px 30px;margin-top:30px;
+  font-family:var(--mono);font-size:12px;letter-spacing:.015em;color:var(--ink-3);
 }
-
-/* --- offline band: the hero's promise, paid off, no screenshot -- */
-.band{background:var(--panel)}
-.band-in{padding-block:clamp(56px,8vw,92px);display:grid;gap:clamp(24px,4vw,56px);grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);align-items:end}
-.band h2{max-width:14ch}
-.band p{margin-top:18px;color:var(--ink-2);max-width:46ch}
-.band-facts{border-top:1px solid var(--line)}
-.band-facts div{
-  display:flex;gap:14px;align-items:baseline;padding:12px 0;border-bottom:1px solid var(--line);
-  font-size:14.5px;color:var(--ink-2);
-}
-.band-facts span{
-  font-family:var(--mono);font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--lime);flex:none;width:64px;
-}
-
-/* --- withheld ---------------------------------------------------*/
-/* --- the group-ride block: the second of the two headline things -- */
-.pack{border-top:1px solid var(--line-soft);padding-top:clamp(44px,6vw,72px);margin-top:clamp(20px,3vw,32px)}
-/* One of the two headline claims, so it is set at section scale, not row scale. */
-.pack > h3{margin-top:12px;max-width:30ch;font-size:clamp(30px,4.4vw,46px)}
-.pack-copy{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:clamp(20px,4vw,48px);margin-top:20px;
-}
-.pack-copy p{color:var(--ink-2)}
-.blur-note{
-  margin-top:20px;max-width:58ch;
-  font-family:var(--mono);font-size:12px;line-height:1.8;letter-spacing:.02em;
-  color:var(--ink-3);
-}
-
-/* The four group screens, shown rather than described. */
-.shots{
-  display:grid;grid-template-columns:repeat(2,minmax(0,1fr));
-  gap:clamp(20px,3vw,30px);margin-top:40px;
-}
-@media (min-width: 900px){
-  .shots{grid-template-columns:repeat(4,minmax(0,1fr))}
-}
-.shot .phone{border-width:6px;border-radius:26px;padding-top:15px}
-.shot .phone::before{top:4px;width:6px;height:6px}
-.shot-cap{
-  font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;
-  text-transform:uppercase;color:var(--lime);margin-top:16px;
-}
-.shot-cap.sos{color:var(--red)}
-.shot p{margin-top:8px;font-size:14px;line-height:1.6;color:var(--ink-2)}
-
-/* --- steps (a real sequence) ----------------------------------- */
-.steps{margin-top:46px;display:grid;gap:0}
-.step{
-  display:grid;grid-template-columns:auto minmax(0,1fr);gap:clamp(18px,4vw,34px);
-  padding-block:26px;border-top:1px solid var(--line);align-items:start;
-}
-.step:last-child{border-bottom:1px solid var(--line)}
-.step-n{
-  font-family:var(--mono);font-size:12px;font-weight:600;letter-spacing:.1em;
-  color:var(--lime);padding-top:6px;width:30px;
-}
-.step h3{font-size:clamp(21px,2.6vw,26px)}
-.step p{margin-top:9px;color:var(--ink-2);max-width:52ch;font-size:15px}
-.req{
-  margin-top:34px;display:flex;flex-wrap:wrap;gap:10px 26px;
-  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink-3);
-}
-.req b{color:var(--ink-2);font-weight:500}
+.standfirst b{color:var(--ink-2);font-weight:500}
 
 /* --- feedback --------------------------------------------------- */
 .feedback{background:var(--panel)}
-.fb-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,6vw,72px);align-items:start}
+.fb-grid{display:grid;grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);gap:clamp(30px,6vw,76px);align-items:start}
 .field{display:flex;flex-direction:column;gap:7px;margin-top:18px}
 .field label{
-  font-family:var(--mono);font-size:10.5px;font-weight:600;letter-spacing:.14em;
+  font-family:var(--mono);font-size:11.5px;font-weight:600;letter-spacing:.14em;
   text-transform:uppercase;color:var(--ink-3);
 }
 input[type=text], input[type=email], textarea{
@@ -287,11 +232,10 @@ input[type=text], input[type=email], textarea{
   padding:13px 15px;font-family:var(--body);font-size:15.5px;line-height:1.5;
   transition:border-color .16s ease;
 }
-input::placeholder, textarea::placeholder{color:#6A6D71}
+input::placeholder, textarea::placeholder{color:var(--ink-3)}
 input:focus, textarea:focus{border-color:#4A4F55;outline:none}
 input:focus-visible, textarea:focus-visible{outline:2px solid var(--lime);outline-offset:2px}
 textarea{resize:vertical;min-height:132px}
-
 .kinds{display:flex;flex-wrap:wrap;gap:8px}
 .kind{
   border:1px solid var(--line);background:var(--ground);color:var(--ink-2);
@@ -300,133 +244,58 @@ textarea{resize:vertical;min-height:132px}
 }
 .kind:hover{border-color:#43474C;color:var(--ink)}
 .kind[aria-pressed="true"]{background:var(--lime);border-color:var(--lime);color:var(--on-lime);font-weight:600}
-
-.fb-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:24px;align-items:center}
-.fb-note{font-family:var(--mono);font-size:11px;letter-spacing:.05em;color:var(--ink-3);margin-top:16px;line-height:1.7}
+.fb-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:26px;align-items:center}
+.fb-note{font-family:var(--mono);font-size:12.5px;letter-spacing:.015em;color:var(--ink-3);margin-top:18px;line-height:1.7}
 .fb-status{font-size:14px;color:var(--lime);font-weight:500;margin-top:14px}
 .fb-status.err{color:var(--red)}
 
 /* --- footer ----------------------------------------------------- */
-footer{padding-block:44px 56px}
+footer{padding-block:48px 60px;border-bottom:0}
 .foot{display:flex;flex-wrap:wrap;gap:18px 30px;align-items:center}
 .foot .spacer{flex:1}
 .foot a{font-size:14px;color:var(--ink-2)}
 .foot a:hover{color:var(--ink)}
-.foot-meta{font-family:var(--mono);font-size:11px;letter-spacing:.07em;color:var(--ink-3)}
+.foot-meta{font-family:var(--mono);font-size:11.5px;letter-spacing:.015em;color:var(--ink-3)}
 
 /* --- responsive -------------------------------------------------- */
-@media (max-width: 900px){
-  .hero-in{grid-template-columns:1fr;gap:38px}
-  .hero-phone{max-width:268px;transform:none}
-  .feature{grid-template-columns:1fr;gap:32px}
-  .feature:nth-child(even) .feature-art{order:0}
-  .band-in{grid-template-columns:1fr;align-items:start}
-  .pack-copy{grid-template-columns:1fr;gap:14px}
+@media (max-width: 960px){
+  .hero-in{grid-template-columns:1fr;gap:0;padding-bottom:0}
+  .hero-copy{padding-bottom:clamp(36px,6vw,56px)}
+  .hero-art .shot{max-width:min(300px,78%)}
+  .band-in{grid-template-columns:1fr;gap:0}
+  .band:nth-of-type(odd) .band-art{order:0}
+  .band-copy{padding-block:clamp(56px,8vw,88px) clamp(28px,4vw,40px)}
+  .band-art{padding-top:0}
+  .band-art .shot{max-width:min(300px,78%)}
   .fb-grid{grid-template-columns:1fr}
-  .ver{display:none}
 }
-@media (max-width: 520px){
-  .stats{gap:18px}
-  .btn{width:100%}
-  .topbar .btn{width:auto}
-}
-
-@media (prefers-reduced-motion: reduce){
-  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
-}
-
-
-/* --- the essay page -------------------------------------------------- */
-/* The reading measure is narrow on purpose; the headline is not. */
-.sec-head.wide{max-width:900px}
-.prose{max-width:62ch}
-.prose p{margin-top:22px;font-size:17.5px;line-height:1.75;color:var(--ink-2)}
-.prose p.lead{font-size:21px;line-height:1.6;color:var(--ink)}
-.prose h3{margin-top:52px;font-size:clamp(24px,3.2vw,31px)}
-.prose h3 + p{margin-top:14px}
-.prose strong{color:var(--ink);font-weight:600}
-.pull{
-  margin-top:40px;padding:26px 0 26px 28px;border-left:3px solid var(--lime);
-  font-family:var(--display);font-weight:700;font-size:clamp(25px,3.6vw,34px);
-  line-height:1.16;color:var(--ink);max-width:24ch;
-}
-.standfirst{display:flex;flex-wrap:wrap;gap:10px 28px;margin-top:28px;
-  font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;color:var(--ink-3)}
-.standfirst b{color:var(--ink-2);font-weight:500}
-@media (max-width:900px){.nav{margin-left:18px;gap:18px}}
-@media (max-width:560px){
-  /* Most visitors arrive on a phone, so the nav stays; it just gets smaller.
-     Hiding it left the second page reachable only from the footer. */
-  .nav{margin-left:12px;gap:14px}
-  .nav a{font-size:13px}
-  .topbar .btn{padding:0 14px}
-}
-@media (max-width:380px){
-  .topbar .mark{height:28px}
-  .nav{gap:11px}
-  .nav a{font-size:12.5px}
-}
-
-/* inline links inside running text */
-.prose a.lnk{color:var(--lime);border-bottom:1px solid rgba(198,240,0,.35)}
-.prose a.lnk:hover{border-bottom-color:var(--lime)}
-
-
-/* --- small-screen hardening -------------------------------------------
-   Found by sweeping both pages from 240px up. The buttons were the only
-   thing that could not shrink: a long label plus fixed side padding pushed
-   past the viewport on a folded phone and on a browser at 200% text size. */
-@media (max-width: 420px){
-  .btn{
-    max-width:100%;
-    padding-inline:18px;
-    font-size:14.5px;
-    white-space:normal;
-    line-height:1.25;
-    height:auto;
-    min-height:52px;
-    padding-block:12px;
-  }
-  .cta-row{width:100%}
-  .cta-row .btn{width:100%}
-}
-/* Nothing on either page should be able to push the viewport sideways. */
-body{overflow-wrap:break-word}
-.prose a.lnk, .foot a, .lede{overflow-wrap:anywhere}
-
-
-/* At roughly 240px of CSS width, which is what a 480px phone gives you at
-   200% browser zoom, two things could not shrink any further: the three-up
-   stats row, and the header's logo-nav-button line. Both are allowed to wrap
-   rather than be clipped by the body's overflow-x. */
-@media (max-width: 330px){
-  .topbar-in{flex-wrap:wrap;height:auto;padding-block:10px;row-gap:8px}
-  .topbar .spacer{display:none}
-  .nav{margin-left:0;order:3;width:100%;gap:18px}
-  .topbar .btn{margin-left:auto}
-  .stats{flex-wrap:wrap;gap:14px 20px}
-  .stat{min-width:0}
-  .req,.standfirst{gap:8px 16px}
-}
-
-
-/* --- header fit on a phone --------------------------------------------
-   The bar was trying to carry logo + name + two nav labels + a button on a
-   360px screen and wrapping into three lines. The mark identifies the brand
-   on its own, so the name steps aside and the labels stop breaking.
-   The topbar button also has to opt out of the wrapping rule above, which
-   was splitting "Get it" across two lines. */
-.nav a{white-space:nowrap}
-.topbar .btn{white-space:nowrap;height:40px;min-height:0;padding-block:0;font-size:14px}
 @media (max-width: 600px){
   .brand .name{display:none}
   .topbar-in{gap:10px}
   .nav{margin-left:4px}
 }
+@media (max-width: 420px){
+  .btn{max-width:100%;padding-inline:18px;font-size:14.5px;white-space:normal;
+       line-height:1.25;height:auto;min-height:54px;padding-block:13px}
+  .topbar .btn{white-space:nowrap;height:40px;min-height:0;padding-block:0;font-size:14px}
+  .cta-row,.cta-row .btn{width:100%}
+}
 @media (max-width: 330px){
-  .topbar-in{flex-wrap:nowrap}
-  .nav{order:0;width:auto;margin-left:2px;gap:12px}
-  .topbar .spacer{display:block}
+  .nav{margin-left:2px;gap:12px}
   .nav a{font-size:12px}
   .topbar .btn{padding-inline:12px;font-size:13px}
+  .specs{grid-template-columns:1fr}
+}
+/* Around 240px of CSS width, which is a small phone at 200% zoom, the bar
+   cannot hold the mark, both links and the button on one line. It wraps to
+   two rather than pushing the page sideways. */
+@media (max-width: 288px){
+  .topbar-in{flex-wrap:wrap;height:auto;padding-block:9px;row-gap:7px}
+  .topbar .spacer{display:none}
+  .topbar .btn{margin-left:auto}
+  .nav{order:3;width:100%;margin-left:0;gap:16px}
+}
+
+@media (prefers-reduced-motion: reduce){
+  *{animation-duration:.001ms !important;transition-duration:.001ms !important}
 }

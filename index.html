@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="description" content="Ride Sync: group rides and ride recording for motorcyclists. Everyone on one live map, the gap in kilometres, and a trail that keeps drawing with no signal. Free on Google Play.">
+<meta name="description" content="Ride Sync: group rides on one live map, with the gap to every rider in kilometres, an SOS the whole group sees, and a trail that keeps drawing with no signal. Free on Google Play.">
 <meta name="theme-color" content="#0B0B0C">
 <meta property="og:title" content="Ride Sync">
 <meta property="og:description" content="Ride together. Record everything. Post nothing.">
@@ -15,15 +15,14 @@
 <meta property="og:site_name" content="Ride Sync">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Ride Sync">
-<meta name="twitter:description" content="Group rides, live on one map, with the gap to every rider in kilometres. Records your trail with no signal. Free on Google Play.">
+<meta name="twitter:description" content="Group rides on one live map, with the gap to every rider in kilometres. Free on Google Play.">
 <meta name="twitter:image" content="https://ridesync.co.in/img/share.jpg">
 <link rel="canonical" href="https://ridesync.co.in/">
-<link rel="icon" href="img/icon.png">
+<link rel="icon" href="img/logo-rs.png">
 <title>Ride Sync</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap">
-
 <link rel="stylesheet" href="site.css">
 </head>
 <body>
@@ -46,274 +45,170 @@
 <section class="hero">
   <canvas id="trace" aria-hidden="true"></canvas>
   <div class="wrap hero-in">
-    <div>
-      <span class="pill"><span class="dot"></span> Out now &middot; Google Play</span>
-
+    <div class="hero-copy">
       <h1>Ride together.<br>Record everything.<br><em>Post nothing.</em></h1>
-
       <p class="lede">
         The big blue one is better at navigation. Obviously. It has more engineers than
         I have users. What it will not do is hold six riders together on a bad road, or
         keep drawing your line after the signal gives up. So I went and built the parts
         nobody else could be bothered with.
       </p>
-
       <div class="cta-row">
         <a class="btn btn-lime" href="https://play.google.com/store/apps/details?id=com.ridesync.rider" target="_blank" rel="noopener">Download on Google Play</a>
-        <a class="btn btn-ghost" href="#what">Show me</a>
+        <a class="btn btn-ghost" href="why.html">Why I built it</a>
       </div>
-
-      <p class="fineprint">Android for now &middot; No ads &middot; No feed &middot; No streaks &middot; Nobody to impress</p>
-
-      <div class="instrument">
-        <p class="instrument-label">Planned in the app. <b>Bengaluru to the Himalayas</b>, and the slower way round</p>
-        <dl class="stats">
-          <div class="stat"><dt>Distance &middot; km</dt><dd>2585.8</dd></div>
-          <div class="stat"><dt>Time</dt><dd>44:26</dd></div>
-          <div class="stat alt"><dt>Other way</dt><dd>+2:20</dd></div>
-        </dl>
+      <p class="fineprint">Android &middot; free &middot; no ads &middot; no feed &middot; no streaks</p>
+    </div>
+    <div class="hero-art">
+      <div class="shot">
+        <img src="img/s-room.jpg" width="620" height="1343" alt="A group ride in Ride Sync: destination Nandi Hills, today at 8:00 am, meeting point 80 Feet Road, the invite code NANDI7, and five of twelve riders joined with the bike each one rides.">
       </div>
     </div>
-
-    <div class="hero-phone phone">
-      <img src="img/map.jpg" width="520" height="1095" alt="The Ride Sync map: a dark map of Bengaluru with a Where to? search bar, quick buttons for Fuel, Hospital and Plan ride, and a record button on the right.">
-    </div>
-  </div>
-</section>
-
-<section id="what">
-  <div class="wrap sec">
-    <div class="sec-head">
-      <p class="eyebrow">The two things</p>
-      <h2>I got good at two things on purpose.</h2>
-      <p class="lede">
-        There are apps that do forty things adequately. This one does two things
-        properly and the rest well enough that nobody has to apologise.
-      </p>
-    </div>
-
-    <div class="feature">
-      <div>
-        <p class="feature-tag">One &middot; Recording</p>
-        <h3>The line you rode. Not the road they assume you took.</h3>
-        <p>
-          Tap once. Phone in the tank bag, screen off, forget it exists. It draws every
-          metre, including the wrong turn you will later deny taking. Stop for chai, hit
-          pause, and the clock waits with you, because a two hour lunch is not slow
-          riding.
-        </p>
-        <p style="margin-top:14px">
-          It also keeps drawing with no signal at all, which is roughly the point where
-          the app already on your home screen offers you a grey rectangle and a spinner.
-        </p>
-        <div class="detail-list">
-          <div><span>Runs</span>screen off, phone in a pocket, all day</div>
-          <div><span>Shows</span>distance, moving time and altitude as you go</div>
-          <div><span>Pause</span>a real pause, not a hole in the line</div>
-          <div><span>Offline</span>still recording, past the last tower</div>
-        </div>
-      </div>
-      <div class="feature-art">
-        <div class="phone">
-          <img src="img/record.jpg" width="520" height="1095" alt="Recording in progress, with a stop button, a pause button, and a card showing kilometres, elapsed time and altitude.">
-        </div>
-      </div>
-    </div>
-
-    <div class="pack">
-      <p class="feature-tag">Two &middot; Group rides</p>
-      <h3>Six riders, one map, nobody reading an empty road.</h3>
-      <div class="pack-copy">
-        <p>
-          Share a code on WhatsApp. That is the setup. Everyone is on the map and moving,
-          with the gap in kilometres beside their name, so from the back you can see
-          exactly how far ahead the pack is instead of doing that arithmetic yourself at
-          dusk and getting it wrong.
-        </p>
-        <p>
-          Somebody needs fuel, or food, or a photograph they will not shut up about
-          afterwards? They say so without anybody stopping. And when it goes properly
-          wrong there is a red button, which is the one feature I would be delighted
-          never to demonstrate.
-        </p>
-      </div>
-
-      <div class="shots">
-        <div class="shot">
-          <div class="phone">
-            <img src="img/group-live.jpg" width="520" height="1095" loading="lazy" alt="A group ride in progress: the whole route across southern India, riders shown as pins, and a status pill reading JACK is refueling.">
-          </div>
-          <p class="shot-cap">Everyone, one map</p>
-          <p>Every rider moving at once, and a pill when somebody peels off for fuel.</p>
-        </div>
-        <div class="shot">
-          <div class="phone">
-            <img src="img/group-map.jpg" width="520" height="1095" loading="lazy" alt="The group map with each rider labelled by distance: one 232.3 km away, another 227.9 km away.">
-          </div>
-          <p class="shot-cap">The gap, in kilometres</p>
-          <p>Not "somewhere ahead". A number, next to a name, updating.</p>
-        </div>
-        <div class="shot">
-          <div class="phone">
-            <img src="img/group-status.jpg" width="520" height="1095" loading="lazy" alt="The rider status sheet listing each rider and their distance, with buttons to call a group break, share an update, and an SOS button.">
-          </div>
-          <p class="shot-cap">Said without stopping</p>
-          <p>Fuel, food, a photo stop. One tap and the whole group knows.</p>
-        </div>
-        <div class="shot">
-          <div class="phone">
-            <img src="img/group-sos.jpg" width="520" height="1095" loading="lazy" alt="An SOS alert filling the screen: a rider needs help, with buttons reading On my way and Got it.">
-          </div>
-          <p class="shot-cap sos">The one you hope stays unused</p>
-          <p>Every screen in the group goes red until somebody answers.</p>
-        </div>
-      </div>
-
-      <p class="blur-note">
-        Names changed, for obvious reasons. The riders were real, the distances were
-        real, and the Sunday was real.
-      </p>
-    </div>
-  </div>
-</section>
-
-<section>
-  <div class="wrap sec">
-    <div class="sec-head">
-      <p class="eyebrow">The rest of it</p>
-      <h2>Everything else, briefly.</h2>
-      <p class="lede">
-        Each of these could have its own heroic paragraph. Nobody wants that.
-      </p>
-    </div>
-
-    <div class="feature">
-      <div>
-        <p class="feature-tag">Plan &amp; navigate</p>
-        <h3>Both roads, and what the pretty one costs.</h3>
-        <p>
-          The one you already have picks a road, bins the alternative and never mentions
-          it again. I put both up with the difference in minutes, so the long way round
-          is a decision you made at the junction rather than one you work out at ten at
-          night, still an hour from anywhere.
-        </p>
-      </div>
-      <div class="feature-art">
-        <div class="phone">
-          <img src="img/nav.jpg" width="520" height="1095" loading="lazy" alt="Navigation with a turn instruction at the top, two route lines on the map, and a label showing the alternative is 140 minutes slower.">
-        </div>
-      </div>
-    </div>
-
-    <div class="feature">
-      <div>
-        <p class="feature-tag">Spots</p>
-        <h3>For places that don't have addresses.</h3>
-        <p>
-          A gap in the trees. A tea stall facing the right way. A crossing that eats
-          front wheels after rain. None of them have a listing, a star rating or a
-          photograph of somebody's thali. Save it while you are standing on it, with a
-          picture and one line of warning, and whoever you send there turns up knowing.
-        </p>
-      </div>
-      <div class="feature-art">
-        <div class="phone">
-          <img src="img/spot.jpg" width="520" height="1095" loading="lazy" alt="A Save a spot sheet with a note field and buttons for camera and photo, over the map.">
-        </div>
-      </div>
-    </div>
-
-    <div class="feature">
-      <div>
-        <p class="feature-tag">Saved</p>
-        <h3>Your rides are yours. Literally, not as a slogan.</h3>
-        <p>
-          Send them to Strava or a Garmin, drop a card into the group chat, or take the
-          file and never open this app again. I would rather you could walk out at any
-          moment and chose not to. Nobody here is quietly working out where you go on
-          Sundays.
-        </p>
-      </div>
-      <div class="feature-art">
-        <div class="phone">
-          <img src="img/saved.jpg" width="520" height="1095" loading="lazy" alt="The Saved tab with tabs for Rides, Plans and Spots, and a button to import a GPX route.">
-        </div>
-      </div>
-    </div>
-
   </div>
 </section>
 
 <section class="band">
-  <div class="wrap band-in">
-    <div>
-      <p class="eyebrow">The one that matters</p>
-      <h2>Can yours record with no signal?</h2>
+  <div class="band-in">
+    <div class="band-copy">
+      <h2>Everyone on one map, with the gap in kilometres.</h2>
       <p>
-        Not show a cached map. Record. Draw your line, hold your route, keep your spots,
-        forty kilometres past the last tower with the SIM tray empty. Download the ground
-        before you leave and ours does it without being asked twice.
+        Every rider is a disc carrying their name and how far away they are. From the back
+        you can see exactly how far ahead the pack has got, instead of doing that
+        arithmetic yourself at dusk and getting it wrong.
       </p>
-      <p style="margin-top:14px">
-        Go and find out what yours does. Aeroplane mode, halfway up a hill, and about
-        four minutes of honesty. Ideally not on the day it matters.
+      <div class="facts">
+        <div><span>Shows</span>who is riding, who has stopped, and for how long</div>
+        <div><span>Tap</span>any rider for directions straight to them</div>
+      </div>
+    </div>
+    <div class="band-art">
+      <div class="shot">
+        <img src="img/s-live.jpg" width="620" height="1343" loading="lazy" alt="The live group map: riders drawn as lettered discs with labels reading 350 m away and 200 m away, one marked last seen 9m, and a bar reading 4 riding with you, 1 stopped.">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="band-in">
+    <div class="band-copy">
+      <h2>Send one code. That is the entire setup.</h2>
+      <p>
+        Name the ride, pick where you are going, share the code on WhatsApp. Everyone who
+        taps it arrives on the same route with the meeting point and the time already
+        filled in. Nothing to configure in a car park at seven in the morning.
+      </p>
+      <div class="facts">
+        <div><span>Host</span>now, or schedule it and everyone gets reminded</div>
+        <div><span>Size</span>up to twelve riders on one code</div>
+        <div><span>Meet</span>check in once you are within 150 m</div>
+      </div>
+    </div>
+    <div class="band-art">
+      <div class="shot">
+        <img src="img/s-host.jpg" width="620" height="1343" loading="lazy" alt="Host a ride: a ride name field, a choice between Ride now and Schedule, and a destination picker.">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="band-in">
+    <div class="band-copy">
+      <h2>Fuel, food, a photo stop. Said without stopping.</h2>
+      <p>
+        One tap and the whole group knows. Whoever is leading can call a break for
+        everybody at once, so five riders do not independently decide to pull over in five
+        different places.
       </p>
     </div>
-    <div class="band-facts">
-      <div><span>Size</span>a full day's riding is around 40 MB</div>
-      <div><span>Works</span>recording and route following, on nothing at all</div>
-      <div><span>Keeps</span>as many regions as you have room for</div>
+    <div class="band-art">
+      <div class="shot">
+        <img src="img/s-status.jpg" width="620" height="1343" loading="lazy" alt="Update the group: a button to call a group break, and tiles for restroom break, refueling, food break, short break, photo stop and clear.">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="band-in">
+    <div class="band-copy">
+      <h2>The one button I would be delighted never to demonstrate.</h2>
+      <p>
+        Raise it and every screen in the ride turns red until somebody answers. They are
+        told who and where, and can say they are on the way. With no signal it waits, then
+        goes the second a bar comes back.
+      </p>
+    </div>
+    <div class="band-art">
+      <div class="shot">
+        <img src="img/s-sos.jpg" width="620" height="1343" loading="lazy" alt="An SOS filling the navigation screen: a red warning, a rider needs help, and buttons reading On my way and Skip.">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="band-in">
+    <div class="band-copy">
+      <h2>The line you rode, not the road it assumed you took.</h2>
+      <p>
+        Distance, moving time, average speed, climb, and the pins you dropped along the
+        way. Send it to Strava or a Garmin, drop a card into the group chat, or take the
+        file and never open this app again.
+      </p>
+    </div>
+    <div class="band-art">
+      <div class="shot">
+        <img src="img/s-saved.jpg" width="620" height="1343" loading="lazy" alt="Ride saved: Nandi sunrise run, 61.4 km, 1 hour 34 minutes moving, 39 average km per hour, 548 metres of climb and one pin.">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band">
+  <div class="band-in">
+    <div class="band-copy">
+      <h2>Download the ground before you lose the bars.</h2>
+      <p>
+        Karnataka is about 18 MB. Goa at street level is 75 MB. Take a whole state, or
+        frame any part of the world and take only that. When the signal goes, the map
+        switches to what you downloaded, on its own.
+      </p>
+      <div class="facts">
+        <div><span>Keeps</span>recording and following a route on nothing at all</div>
+        <div><span>Works</span>outside India, anywhere you can frame on the map</div>
+      </div>
+    </div>
+    <div class="band-art">
+      <div class="shot">
+        <img src="img/s-offline.jpg" width="620" height="1343" loading="lazy" alt="Offline maps: download by state, with Karnataka at about 18 MB, Kerala 9 MB, Tamil Nadu 14 MB and Goa 75 MB at street level.">
+      </div>
     </div>
   </div>
 </section>
 
 <section id="get">
-  <div class="wrap sec">
-    <div class="sec-head">
-      <p class="eyebrow">How you get it</p>
+  <div class="wrap close-in">
+    <div class="sec-head wide">
       <h2>It's out. Go and get it.</h2>
       <p class="lede">
-        Free on Google Play, with no ads in it and nothing to subscribe to. It spent a
-        long time in testing with riders who told me it was rubbish until it wasn't.
+        Free on Google Play, with no advertising in it and nothing to subscribe to. It
+        spent a long time in testing with riders who told me it was rubbish until it
+        wasn't.
       </p>
     </div>
 
-    <div class="steps">
-      <div class="step">
-        <p class="step-n">01</p>
-        <div>
-          <h3>Install it.</h3>
-          <p>Search "Ride Sync" on Google Play, or use the button below. Normal store,
-             normal updates. No sideloading, no APK from a stranger on Telegram.</p>
-        </div>
-      </div>
-      <div class="step">
-        <p class="step-n">02</p>
-        <div>
-          <h3>Send the code to your group.</h3>
-          <p>Host a ride, share the invite code on WhatsApp, and everybody is on the
-             same map. That is the entire setup.</p>
-        </div>
-      </div>
-      <div class="step">
-        <p class="step-n">03</p>
-        <div>
-          <h3>Then tell me it's rubbish.</h3>
-          <p>There is a button in the app for precisely that. Everything gets read,
-             everything gets an answer. There is one of me, so ignoring you is not an option.</p>
-        </div>
-      </div>
-    </div>
+    <dl class="specs">
+      <div><dt>Android</dt><dd>8.0 and up</dd></div>
+      <div><dt>iPhone</dt><dd>Not yet</dd></div>
+      <div><dt>Riders</dt><dd>12 per ride</dd></div>
+      <div><dt>Costs</dt><dd>Nothing</dd></div>
+    </dl>
 
-    <div class="cta-row" style="margin-top:34px">
+    <div class="cta-row">
       <a class="btn btn-lime" href="https://play.google.com/store/apps/details?id=com.ridesync.rider" target="_blank" rel="noopener">Download on Google Play</a>
-    </div>
-
-    <div class="req">
-      <span><b>Android</b> 8.0 and up</span>
-      <span><b>iPhone</b> not yet</span>
-      <span><b>Needs</b> location while riding</span>
-      <span><b>Costs</b> nothing, no ads</span>
+      <a class="btn btn-ghost" href="#say">Tell me it's broken</a>
     </div>
   </div>
 </section>
@@ -322,7 +217,6 @@
   <div class="wrap sec">
     <div class="fb-grid">
       <div class="sec-head">
-        <p class="eyebrow">Say something</p>
         <h2>Tell me it's wrong.</h2>
         <p class="lede">
           A bug. A road the routing is stupid about. Something you wish it did, or
@@ -356,7 +250,7 @@
 
         <div class="field">
           <label for="fb-msg">Your message</label>
-          <textarea id="fb-msg" name="message" placeholder="Where you ride, what you ride, and what you want from a map."></textarea>
+          <textarea id="fb-msg" name="message" placeholder="What happened, and what you were doing at the time."></textarea>
         </div>
 
         <div class="fb-actions">
@@ -374,9 +268,9 @@
     <img class="footmark" src="img/logo-lockup.png" alt="" aria-hidden="true">
     <span class="foot-meta">Ride Sync, by Rev Republic</span>
     <span class="spacer"></span>
-    <a href="https://wolfiekulfie.github.io/ride-sync-legal/privacy.html" target="_blank" rel="noopener">Privacy</a>
-    <a href="https://wolfiekulfie.github.io/ride-sync-legal/delete-account.html" target="_blank" rel="noopener">Delete your account</a>
     <a href="why.html">Why I built it</a>
+    <a href="privacy.html">Privacy</a>
+    <a href="delete-account.html">Delete your account</a>
     <a href="#say">Contact</a>
   </div>
 </footer>
@@ -385,63 +279,46 @@
 (function () {
   'use strict';
 
-  /* ----------------------------------------------------------------
-     Hero backdrop: topographic contours (the app icon's own texture)
-     with a recorded trail across them. Drawn complete on the first
-     frame, so the page is whole at rest and only the head travels.
-     ---------------------------------------------------------------- */
+  /* The page's one authored moment: the icon's topographic ground with a
+     recorded trail across it, drawn complete on the first frame so the hero
+     is whole at rest. Only the recording head moves. */
   var canvas = document.getElementById('trace');
   var ctx = canvas && canvas.getContext ? canvas.getContext('2d') : null;
   var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   if (ctx) {
-    var W = 0, H = 0, dpr = 1, path = [], contours = [];
+    var W = 0, H = 0, dpr = 1, path = [], rings = [];
 
-    // Deterministic noise so the ridge looks the same on every load.
     function seeded(seed) {
       var s = seed;
       return function () { s = (s * 1664525 + 1013904223) % 4294967296; return s / 4294967296; };
     }
 
-    function buildContours(rnd) {
-      var rings = [];
+    function build(rnd) {
+      rings = [];
       var peaks = [
-        { x: 0.22, y: 0.30, n: 11, r: 0.05, step: 0.033 },
-        { x: 0.74, y: 0.66, n: 13, r: 0.04, step: 0.036 },
-        { x: 0.52, y: -0.06, n: 8, r: 0.06, step: 0.040 }
+        { x: 0.20, y: 0.26, n: 12, r: 0.05, step: 0.034 },
+        { x: 0.78, y: 0.70, n: 14, r: 0.04, step: 0.038 }
       ];
       for (var p = 0; p < peaks.length; p++) {
-        var pk = peaks[p];
-        var wob = [rnd() * 6.28, rnd() * 6.28, rnd() * 6.28];
+        var pk = peaks[p], wob = [rnd() * 6.28, rnd() * 6.28, rnd() * 6.28];
         for (var i = 0; i < pk.n; i++) {
-          var base = pk.r + i * pk.step;
-          var pts = [];
-          for (var a = 0; a <= 64; a++) {
-            var t = (a / 64) * Math.PI * 2;
-            var rr = base * (1
-              + 0.20 * Math.sin(t * 3 + wob[0])
-              + 0.13 * Math.sin(t * 5 + wob[1])
-              + 0.08 * Math.sin(t * 2 + wob[2]));
-            pts.push([pk.x + rr * Math.cos(t) * 0.78, pk.y + rr * Math.sin(t)]);
+          var base = pk.r + i * pk.step, pts = [];
+          for (var a = 0; a <= 72; a++) {
+            var t = (a / 72) * Math.PI * 2;
+            var rr = base * (1 + 0.21 * Math.sin(t * 3 + wob[0])
+                               + 0.13 * Math.sin(t * 5 + wob[1])
+                               + 0.08 * Math.sin(t * 2 + wob[2]));
+            pts.push([pk.x + rr * Math.cos(t) * 0.74, pk.y + rr * Math.sin(t)]);
           }
           rings.push(pts);
         }
       }
-      return rings;
-    }
-
-    // A hill road: climbing, with hairpins that tighten near the top.
-    function buildPath(rnd) {
-      var pts = [];
-      var n = 46;
-      for (var i = 0; i <= n; i++) {
-        var t = i / n;
-        var y = 1.06 - t * 1.16;
-        var amp = 0.20 * (1 - t * 0.55);
-        var x = 0.30 + amp * Math.sin(t * 13.5) + t * 0.42 + (rnd() - 0.5) * 0.018;
-        pts.push([x, y]);
+      path = [];
+      for (var k = 0; k <= 46; k++) {
+        var u = k / 46;
+        path.push([0.28 + 0.19 * Math.sin(u * 12.5) + u * 0.46, 1.08 - u * 1.2]);
       }
-      return pts;
     }
 
     function resize() {
@@ -449,73 +326,51 @@
       dpr = Math.min(window.devicePixelRatio || 1, 2);
       W = Math.max(1, Math.round(rect.width));
       H = Math.max(1, Math.round(rect.height));
-      canvas.width = W * dpr;
-      canvas.height = H * dpr;
+      canvas.width = W * dpr; canvas.height = H * dpr;
       ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      contours = buildContours(seeded(20260921));
-      path = buildPath(seeded(94));
+      build(seeded(20261123));
     }
-
-    function px(p) { return [p[0] * W, p[1] * H]; }
 
     function stroke(pts, close) {
       ctx.beginPath();
       for (var i = 0; i < pts.length; i++) {
-        var q = px(pts[i]);
-        if (i === 0) ctx.moveTo(q[0], q[1]); else ctx.lineTo(q[0], q[1]);
+        var x = pts[i][0] * W, y = pts[i][1] * H;
+        if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
       }
       if (close) ctx.closePath();
       ctx.stroke();
     }
 
-    var head = 0;
+    var head = 0, last = 0;
 
     function draw() {
       ctx.clearRect(0, 0, W, H);
-
-      // Contours - faint, like the icon's ground.
       ctx.lineWidth = 1;
-      ctx.strokeStyle = 'rgba(198,240,0,0.085)';
-      for (var i = 0; i < contours.length; i++) stroke(contours[i], true);
+      ctx.strokeStyle = 'rgba(198,240,0,0.075)';
+      for (var i = 0; i < rings.length; i++) stroke(rings[i], true);
 
-      // The trail: a dark casing under lime, exactly as the app draws it on a map.
-      ctx.lineCap = 'round';
-      ctx.lineJoin = 'round';
-      ctx.strokeStyle = 'rgba(0,0,0,0.55)';
-      ctx.lineWidth = 7;
-      stroke(path, false);
-      ctx.strokeStyle = 'rgba(198,240,0,0.34)';
-      ctx.lineWidth = 3.5;
-      stroke(path, false);
+      ctx.lineCap = 'round'; ctx.lineJoin = 'round';
+      ctx.strokeStyle = 'rgba(0,0,0,0.55)'; ctx.lineWidth = 7; stroke(path, false);
+      ctx.strokeStyle = 'rgba(198,240,0,0.30)'; ctx.lineWidth = 3.5; stroke(path, false);
 
-      // The recording head, travelling the line.
       if (!reduced) {
-        var idx = head * (path.length - 1);
-        var i0 = Math.floor(idx), f = idx - i0;
-        var a = path[Math.min(i0, path.length - 1)];
-        var b = path[Math.min(i0 + 1, path.length - 1)];
-        var hx = (a[0] + (b[0] - a[0]) * f) * W;
-        var hy = (a[1] + (b[1] - a[1]) * f) * H;
+        var idx = head * (path.length - 1), i0 = Math.floor(idx), f = idx - i0;
+        var a = path[Math.min(i0, path.length - 1)], b = path[Math.min(i0 + 1, path.length - 1)];
+        var hx = (a[0] + (b[0] - a[0]) * f) * W, hy = (a[1] + (b[1] - a[1]) * f) * H;
         var g = ctx.createRadialGradient(hx, hy, 0, hx, hy, 46);
-        g.addColorStop(0, 'rgba(198,240,0,0.36)');
-        g.addColorStop(1, 'rgba(198,240,0,0)');
-        ctx.fillStyle = g;
-        ctx.beginPath(); ctx.arc(hx, hy, 46, 0, 6.2832); ctx.fill();
+        g.addColorStop(0, 'rgba(198,240,0,0.34)'); g.addColorStop(1, 'rgba(198,240,0,0)');
+        ctx.fillStyle = g; ctx.beginPath(); ctx.arc(hx, hy, 46, 0, 6.2832); ctx.fill();
         ctx.fillStyle = 'rgba(198,240,0,0.9)';
         ctx.beginPath(); ctx.arc(hx, hy, 3.4, 0, 6.2832); ctx.fill();
       }
     }
 
-    var last = 0;
     function tick(now) {
-      if (!reduced) {
-        if (now - last > 33) { head = (head + 0.0022) % 1; last = now; draw(); }
-        requestAnimationFrame(tick);
-      }
+      if (now - last > 33) { head = (head + 0.0022) % 1; last = now; draw(); }
+      requestAnimationFrame(tick);
     }
 
-    resize();
-    draw();
+    resize(); draw();
     if (!reduced) requestAnimationFrame(tick);
 
     var rt;
@@ -525,13 +380,9 @@
     });
   }
 
-  /* ----------------------------------------------------------------
-     Feedback box. No server, nothing stored, nothing hidden: it
-     composes the message and hands it to the visitor's own mail app,
-     with copy-to-clipboard for anyone who doesn't have one wired up.
-     ---------------------------------------------------------------- */
+  /* The feedback box keeps no server: it composes the message and hands it
+     to the visitor's own mail app, with a clipboard fallback. */
   var INBOX = 'revrepublic24@gmail.com';
-
   var form = document.getElementById('fb');
   var statusEl = document.getElementById('fb-status');
   var kindBtns = Array.prototype.slice.call(document.querySelectorAll('.kind'));
@@ -555,8 +406,7 @@
     var email = document.getElementById('fb-email').value.trim();
     var msg = document.getElementById('fb-msg').value.trim();
     if (!msg) { say('Write something first. Even one line.', true); return null; }
-    var body = msg
-      + '\n\n--\n'
+    var body = msg + '\n\n--\n'
       + 'From: ' + (name || 'someone who did not say')
       + '\nReply to: ' + (email || 'no email given')
       + '\nSent from the Ride Sync site';
@@ -579,12 +429,9 @@
     var text = 'To: ' + INBOX + '\nSubject: ' + m.subject + '\n\n' + m.body;
     function fallback() {
       var ta = document.createElement('textarea');
-      ta.value = text;
-      ta.setAttribute('readonly', '');
-      ta.style.position = 'fixed';
-      ta.style.opacity = '0';
-      document.body.appendChild(ta);
-      ta.select();
+      ta.value = text; ta.setAttribute('readonly', '');
+      ta.style.position = 'fixed'; ta.style.opacity = '0';
+      document.body.appendChild(ta); ta.select();
       var ok = false;
       try { ok = document.execCommand('copy'); } catch (err) { ok = false; }
       document.body.removeChild(ta);
@@ -595,12 +442,9 @@
       navigator.clipboard.writeText(text).then(function () {
         say('Copied. Paste it into an email to ' + INBOX + '.');
       })['catch'](fallback);
-    } else {
-      fallback();
-    }
+    } else { fallback(); }
   });
 })();
 </script>
-
 </body>
 </html>
