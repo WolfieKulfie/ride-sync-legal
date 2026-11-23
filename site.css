@@ -103,7 +103,7 @@ p{margin:0}
 .mark{height:30px;width:auto;flex:none}
 .footmark{height:54px;width:auto;flex:none}
 .brand{display:flex;align-items:center;gap:13px}
-.brand .name{font-family:var(--display);font-weight:700;font-size:21px;letter-spacing:.01em;color:var(--ink)}
+.brand .name{display:none}
 .nav{display:flex;gap:26px;margin-left:30px}
 .nav a{font-size:14.5px;color:var(--ink-2);padding-block:6px;border-bottom:2px solid transparent;white-space:nowrap}
 .nav a:hover{color:var(--ink)}
@@ -270,7 +270,6 @@ footer{padding-block:48px 60px;border-bottom:0}
   .fb-grid{grid-template-columns:1fr}
 }
 @media (max-width: 600px){
-  .brand .name{display:none}
   .topbar-in{gap:10px}
   .nav{margin-left:4px}
 }
