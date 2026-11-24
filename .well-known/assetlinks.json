@@ -1,0 +1,12 @@
+[
+  {
+    "relation": ["delegate_permission/common.handle_all_urls"],
+    "target": {
+      "namespace": "android_app",
+      "package_name": "com.ridesync.rider",
+      "sha256_cert_fingerprints": [
+        "C2:6F:95:E1:3E:D2:66:53:6C:1A:2C:E7:25:E6:69:91:9D:C6:C0:4F:13:58:9A:23:B6:A6:A7:76:E0:E3:11:0B"
+      ]
+    }
+  }
+]
