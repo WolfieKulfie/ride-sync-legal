@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-page="join">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -19,7 +19,7 @@
     color-scheme: dark;
     --ground:#0B0B0C; --panel:#111214; --line:#26282B;
     --lime:#C6F000; --on-lime:#1A2200;
-    --ink:#F5F5F3; --ink-2:#A9ABAD; --ink-3:#6E7276;
+    --ink:#F5F5F3; --ink-2:#A9ABAD; --ink-3:#8A8D91;
     --display:"Saira Condensed",system-ui,sans-serif;
     --body:"IBM Plex Sans",system-ui,sans-serif;
     --mono:"IBM Plex Mono",ui-monospace,monospace;
@@ -56,7 +56,12 @@
   }
   .btn-lime{background:var(--lime); color:var(--on-lime)}
   .btn-ghost{border:1.5px solid var(--line); color:var(--ink)}
-  .fine{font-family:var(--mono); font-size:11.5px; letter-spacing:.05em; color:var(--ink-3); margin-top:22px}
+  .fine{font-family:var(--mono); font-size:12.5px; letter-spacing:.05em; color:var(--ink-3); margin-top:22px}
+  .proof{
+    margin-top:26px; padding-top:20px; border-top:1px solid var(--line);
+    font-size:14px; line-height:1.6; color:var(--ink-2); text-align:left;
+  }
+  .proof a{color:var(--lime); white-space:nowrap}
   .fine a{color:var(--ink-2)}
   @media (prefers-reduced-motion:no-preference){
     .card{animation:in .35s ease-out}
@@ -72,8 +77,14 @@
     <div class="code" id="code" hidden></div>
     <p id="codehint" class="fine" hidden>If the app does not open, type this code into Join a ride.</p>
 
-    <a class="btn btn-lime" id="open" href="#">Open in Ride Sync</a>
-    <a class="btn btn-ghost" id="play" href="https://play.google.com/store/apps/details?id=com.ridesync.rider">Get the app</a>
+    <a class="btn btn-lime" id="open" data-count="open_app" href="#">Open in Ride Sync</a>
+    <a class="btn btn-ghost" id="play" data-count="get_app" href="https://play.google.com/store/apps/details?id=com.ridesync.rider">Get the app</a>
+
+    <p class="proof">
+      If a rider goes down, every screen in the group goes red until somebody answers.
+      No signal, and it queues, then goes the second a bar comes back.
+      <a href="why.html">Why that exists</a>
+    </p>
 
     <p class="fine">Free. No ads, no tracking. <a href="/">ridesync.co.in</a></p>
   </main>
@@ -97,8 +108,11 @@
   var code = clean(p.get('code'));
   var ref = clean(p.get('ref'));
 
-  var deep = code ? 'ridesync://join?code=' + code : 'ridesync://ref?ref=' + ref;
-  document.getElementById('open').href = deep;
+  // With neither parameter there is nothing to open: the old line built
+  // "ridesync://ref?ref=" and fired it at every phone that landed here bare.
+  var deep = code ? 'ridesync://join?code=' + code : (ref ? 'ridesync://ref?ref=' + ref : '');
+  if (deep) document.getElementById('open').href = deep;
+  else document.getElementById('open').hidden = true;
 
   if (code) {
     var el = document.getElementById('code');
@@ -115,10 +129,14 @@
   // Try the app straight away, but only on a phone, and only once the page has painted. Firing it
   // on a desktop browser produces a scary "no app found" dialog for somebody who was only ever
   // going to click through to the store.
-  if (/Android|iPhone|iPad/i.test(navigator.userAgent)) {
-    setTimeout(function () { location.href = deep; }, 500);
+  if (deep && /Android|iPhone|iPad/i.test(navigator.userAgent)) {
+    setTimeout(function () {
+      if (window.rsBump) window.rsBump('open_app');
+      location.href = deep;
+    }, 500);
   }
 })();
 </script>
+<script src="count.js" defer></script>
 </body>
 </html>

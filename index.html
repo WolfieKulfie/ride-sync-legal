@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-page="home">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
@@ -35,10 +35,10 @@
     </a>
     <nav class="nav">
       <a href="index.html" aria-current="page">The app</a>
-      <a href="why.html">Why I built it</a>
+      <a href="why.html">Why the SOS exists</a>
     </nav>
     <span class="spacer"></span>
-    <a class="btn btn-lime" href="https://play.google.com/store/apps/details?id=com.ridesync.rider" target="_blank" rel="noopener">Get it</a>
+    <a class="btn btn-lime" data-count="get_app" href="https://play.google.com/store/apps/details?id=com.ridesync.rider" target="_blank" rel="noopener">Get it</a>
   </div>
 </header>
 
@@ -54,8 +54,8 @@
         nobody else could be bothered with.
       </p>
       <div class="cta-row">
-        <a class="btn btn-lime" href="https://play.google.com/store/apps/details?id=com.ridesync.rider" target="_blank" rel="noopener">Download on Google Play</a>
-        <a class="btn btn-ghost" href="why.html">Why I built it</a>
+        <a class="btn btn-lime" data-count="get_app" href="https://play.google.com/store/apps/details?id=com.ridesync.rider" target="_blank" rel="noopener">Download on Google Play</a>
+        <a class="btn btn-ghost" href="why.html">Why the SOS exists</a>
       </div>
       <p class="fineprint">Android &middot; free &middot; no ads &middot; no feed &middot; no streaks</p>
     </div>
@@ -70,19 +70,57 @@
 <section class="band">
   <div class="band-in">
     <div class="band-copy">
-      <h2>One code. Everybody's in.</h2>
+      <h2>Four rides, one road.</h2>
       <p>
-        Drop it in the group chat. They tap, they're on the same route, same meeting
-        point, same map. No forms, no faff.
+        One of you is here for the destination. One would happily take all day. One has
+        pulled over to film the corner. Nobody has to pick.
       </p>
       <div class="facts">
-        <div><span>Holds</span>twelve riders on one code</div>
-        <div><span>Knows</span>who has turned up, once they are within 150 m</div>
+        <div><span>Shows</span>every rider on the shared route, and the gap in kilometres</div>
+        <div><span>Means</span>stopping for twenty minutes stops being somebody else's problem</div>
       </div>
     </div>
     <div class="band-art">
       <div class="shot bleed">
         <img src="img/s-room.jpg" width="620" height="1343" loading="lazy" alt="A group ride called RR Nandi Hills: destination, today at 8:00 am, meeting point 80 Feet Road, the invite code NANDI7, and six of twelve riders joined with the bike each one rides.">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="band proof">
+  <div class="band-in">
+    <div class="band-copy">
+      <h2>The button nobody wants to press.</h2>
+      <p>
+        Every screen in the ride goes red until somebody answers. No signal where you
+        came off? It queues, and goes the second a bar comes back.
+      </p>
+      <p class="proof-quote">An SOS nobody receives is the same as an SOS nobody sends.</p>
+      <p class="proof-link"><a href="why.html">Why the SOS exists</a></p>
+    </div>
+    <div class="band-art">
+      <div class="shot bleed">
+        <img src="img/s-sos.jpg" width="620" height="1343" loading="lazy" alt="An SOS filling the navigation screen: a red warning reading Johnny needs help, with buttons reading On my way and Skip.">
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="row-sec">
+  <div class="wrap">
+    <div class="row3">
+      <div>
+        <h3>One code, everybody's in</h3>
+        <p>Drop it in the group chat. No forms, no faff.</p>
+      </div>
+      <div>
+        <h3>Tell them without stopping</h3>
+        <p>Fuel, food, photo stop. One tap and five riders stop wondering.</p>
+      </div>
+      <div>
+        <h3>No bars, no problem</h3>
+        <p>Karnataka is 18 MB. Download it and the map carries on regardless.</p>
       </div>
     </div>
   </div>
@@ -111,39 +149,6 @@
 <section class="band">
   <div class="band-in">
     <div class="band-copy">
-      <h2>Tell them without stopping.</h2>
-      <p>
-        Fuel, food, photo stop. One tap and five riders stop wondering where you went.
-      </p>
-    </div>
-    <div class="band-art">
-      <div class="shot bleed">
-        <img src="img/s-status.jpg" width="620" height="1343" loading="lazy" alt="Update the group, over the navigation map: a button to call a group break, and tiles for restroom break, refueling, food break, short break, photo stop and clear.">
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="band-in">
-    <div class="band-copy">
-      <h2>The button nobody wants to press.</h2>
-      <p>
-        Every screen in the ride goes red until somebody answers. No signal? It waits,
-        then goes the second a bar comes back.
-      </p>
-    </div>
-    <div class="band-art">
-      <div class="shot bleed">
-        <img src="img/s-sos.jpg" width="620" height="1343" loading="lazy" alt="An SOS filling the navigation screen: a red warning reading Johnny needs help, with buttons reading On my way and Skip.">
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="band-in">
-    <div class="band-copy">
       <h2>Your ride, receipts and all.</h2>
       <p>
         The line you actually rode, with the climb you will absolutely mention later.
@@ -153,27 +158,6 @@
     <div class="band-art">
       <div class="shot bleed">
         <img src="img/s-saved.jpg" width="620" height="1343" loading="lazy" alt="Ride saved: Nandi sunrise run, 61.4 km, 1 hour 34 minutes moving, 39 average km per hour, 548 metres of climb and one pin.">
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="band">
-  <div class="band-in">
-    <div class="band-copy">
-      <h2>No bars. No problem.</h2>
-      <p>
-        Karnataka is 18 MB. Grab it before you leave and the map carries on without a
-        single bar, recording and all.
-      </p>
-      <div class="facts">
-        <div><span>Takes</span>a whole state, or any box you draw on the map</div>
-        <div><span>Works</span>outside India too</div>
-      </div>
-    </div>
-    <div class="band-art">
-      <div class="shot bleed">
-        <img src="img/s-offline.jpg" width="620" height="1343" loading="lazy" alt="Offline maps: download by state, with Karnataka at about 18 MB, Kerala 9 MB, Tamil Nadu 14 MB and Goa 75 MB at street level.">
       </div>
     </div>
   </div>
@@ -195,8 +179,20 @@
       <div><dt>Riders</dt><dd>12 per ride</dd></div>
     </dl>
 
+    <form class="waitlist" id="wl" novalidate>
+      <label for="wl-email">On an iPhone? Leave an address and I will tell you when it lands.</label>
+      <div class="waitlist-row">
+        <input type="email" id="wl-email" name="email" autocomplete="email" placeholder="you@example.com">
+        <button type="submit" class="btn btn-ghost">Tell me when</button>
+      </div>
+      <p class="waitlist-note" id="wl-note">
+        Nothing is stored on this page. It opens your own email app with the message written,
+        so you can see exactly what leaves.
+      </p>
+    </form>
+
     <div class="cta-row">
-      <a class="btn btn-lime" href="https://play.google.com/store/apps/details?id=com.ridesync.rider" target="_blank" rel="noopener">Download on Google Play</a>
+      <a class="btn btn-lime" data-count="get_app" href="https://play.google.com/store/apps/details?id=com.ridesync.rider" target="_blank" rel="noopener">Download on Google Play</a>
       <a class="btn btn-ghost" href="#say">Tell me it's broken</a>
     </div>
   </div>
@@ -257,7 +253,7 @@
     <img class="footmark" src="img/logo-lockup.png" alt="" aria-hidden="true">
     <span class="foot-meta">Ride Sync, by Rev Republic</span>
     <span class="spacer"></span>
-    <a href="why.html">Why I built it</a>
+    <a href="why.html">Why the SOS exists</a>
     <a href="privacy.html">Privacy</a>
     <a href="delete-account.html">Delete your account</a>
     <a href="#say">Contact</a>
@@ -369,6 +365,30 @@
     });
   }
 
+  /* The iPhone waiting list is the feedback box with one field: same promise,
+     same mechanism, nothing kept here. */
+  var wl = document.getElementById('wl');
+  if (wl) {
+    wl.addEventListener('submit', function (e) {
+      e.preventDefault();
+      var note = document.getElementById('wl-note');
+      var addr = document.getElementById('wl-email').value.trim();
+      if (!addr || addr.indexOf('@') < 1) {
+        note.textContent = 'That does not look like an email address.';
+        note.className = 'waitlist-note err';
+        return;
+      }
+      window.location.href = 'mailto:revrepublic24@gmail.com'
+        + '?subject=' + encodeURIComponent('Ride Sync: tell me when iPhone lands')
+        + '&body=' + encodeURIComponent('Put me on the list.
+
+Reply to: ' + addr + '
+Sent from the Ride Sync site');
+      note.textContent = 'Your email app should be opening. Nothing sends until you press send there.';
+      note.className = 'waitlist-note ok';
+    });
+  }
+
   /* The feedback box keeps no server: it composes the message and hands it
      to the visitor's own mail app, with a clipboard fallback. */
   var INBOX = 'revrepublic24@gmail.com';
@@ -435,5 +455,6 @@
   });
 })();
 </script>
+<script src="count.js" defer></script>
 </body>
 </html>
